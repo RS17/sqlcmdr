@@ -1,5 +1,6 @@
 # sqlcmdr
 go package for slightly easier sql commands
+(if viewing this on Github click "Raw", for some reason GitHub doesn't recognize spaces at the start of a line...)
 
 This is a working (but also very WIP) package intended for use with sqlite3 that makes it slightly easier to create basic sql select and insert commands for a simple sql database while minimizing putting long strings like "SELECT x FROM y" all over your code.  Over time I expect to add more features as I use this for side projects.  In the meantime use at your own risk.
 
