@@ -5,11 +5,11 @@ This is a working (but also very WIP) package intended for use with sqlite3 that
 
 Examples:
 JustRunIt - runs command in one line, returns nothing.  Doesn't require initializing DB first.
-sqlcmdr.JustRunIt( 	"CREATE TABLE IF NOT EXISTS developers (" + 
+   sqlcmdr.JustRunIt( 	"CREATE TABLE IF NOT EXISTS developers (" + 
 			"name VARCHAR( 50 ) NOT NULL PRIMARY KEY," +
 			"description VARCHAR( 1000 ) )"  )
 
-InitDB - initializes DB and returns connection, necessary for select and insert
+InitDB - initializes DB and returns connection, necessary for select and insert  
    conn := sqlcmdr.InitDB() 
 
 InsertCmd/Insert - use this to do a simple insert 
