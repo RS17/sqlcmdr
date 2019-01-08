@@ -27,7 +27,7 @@ InsertCmd/Insert - use this to do a simple insert
 SelectCmd/Select - do a simple select (there is also ability to add a where clause but this is still untested so it's not recommonded).  Returns array of arrays corresponding to 2D table  
    
    // select all columns from developers table  
-   scmd := sqlcmdr.SelectCmd{ Tablename: "developers", Columns: "*" }  
+   scmd := sqlcmdr.SelectCmd{ Tablename: "developers", Columns: "name, description" }  
    retvals := sqlcmdr.Select( conn, scmd )  
   
    // retvals is [][]interface{}, so this is how you could convert it to a big long string or something  
@@ -41,6 +41,6 @@ SelectCmd/Select - do a simple select (there is also ability to add a where clau
    }  
    conn.Close()
 
-
+The select also has a join functionality, but I'll probably improve that before bothering with instructions.
 
 It can also probably be used for other sql databases with minimal changes.
