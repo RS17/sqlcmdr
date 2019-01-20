@@ -34,8 +34,8 @@ Use this to do a simple insert.
 
    // run it
    conn := sqlcmdr.InitDB() 
+   defer conn.Close()
    sqlcmdr.Insert( conn, icmd )
-   conn.Close()
    
 ```
 
@@ -47,6 +47,10 @@ Do a simple select (there is also a very rudimentary ability to add a where clau
 	scmd := sqlcmdr.SelectCmd{ Tablename: "developers", Columns: "name, commitdate" } 
 	scmd.AddJoin( "developers-name", "projects-developer", "LEFT" }				// jointable uses tablename-columnname to define the matching join columns, last value is type
 	scmd.AddJoin( "projects-id", "commits-projectid", "RIGHT" }
+	
+	// run it
+	conn := sqlcmdr.InitDB() 
+   	defer conn.Close()
 	result := sqlcmdr.Select( conn, scmd ) 							// result is [][]interface{}.  You can use built-in converters (see below) or make your own
 ```	
 
