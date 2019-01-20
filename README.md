@@ -9,16 +9,20 @@ This is also used extensively in my other project stratterm, which is developed 
 
 ## Examples:
 JustRunIt - runs command in one line, returns nothing.  Doesn't require initializing DB first.
-'''
+
+```
+
 sqlcmdr.JustRunIt( 	"CREATE TABLE IF NOT EXISTS developers (" + 
 					"name VARCHAR( 50 ) NOT NULL PRIMARY KEY," +
 					"description VARCHAR( 1000 ) )"  )
-'''
+```
+
 ###InitDB - initializes DB and returns connection, necessary for select and insert
-   conn := sqlcmdr.InitDB() 
+ ```  conn := sqlcmdr.InitDB() ```
 
 ###InsertCmd/Insert - use this to do a simple insert. 
-'''
+
+```
    // create command
    icmd := sqlcmdr.InsertCmd{ Tablename: "developers" }
    icmd.Add( "name", "Ravi" )
@@ -28,20 +32,27 @@ sqlcmdr.JustRunIt( 	"CREATE TABLE IF NOT EXISTS developers (" +
    conn := sqlcmdr.InitDB() 
    sqlcmdr.Insert( conn, icmd )
    conn.Close()
-'''
+   
+```
+
 ###SelectCmd/Select - do a simple select (there is also a very rudimentary ability to add a where clause, to be improved in future).  Returns array of arrays corresponding to 2D table.  Can do joins with AddJoin.
-'''
+
+```
 	// select all columns from developers table
 	scmd := sqlcmdr.SelectCmd{ Tablename: "developers", Columns: "name, commitdate" } 
-	scmd.AddJoin( "developers-name", "projects-developer", "LEFT" }						// jointable uses tablename-columnname to define the matching join columns, last value is type
+	scmd.AddJoin( "developers-name", "projects-developer", "LEFT" }				// jointable uses tablename-columnname to define the matching join columns, last value is type
 	scmd.AddJoin( "projects-id", "commits-projectid", "RIGHT" }
 	result := sqlcmdr.Select( conn, scmd ) 												// result is [][]interface{}.  You can use built-in converters (see below) or make your own
-'''	
+```	
+
 ###ResultCSV - converts [][]interface to a csv, output to a specified file
-'''	
+
+```	
 	message = sqlcmdr.ResultCSV( result, "result.csv" );								// returns confirmation message
-'''	
+```	
+
 ###ResultString - converts[][]interface to a string
-'''	
+
+```	
 	resultstr = sqlcmdr.ResultString( result );
-'''
+```
