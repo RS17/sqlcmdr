@@ -19,7 +19,8 @@ sqlcmdr.JustRunIt( 	"CREATE TABLE IF NOT EXISTS developers (" +
 ```
 
 ### InitDB 
-Initializes DB and returns connection, necessary for select and insert
+Initializes DB and returns connection, necessary for select and insert  
+
  ```  conn := sqlcmdr.InitDB() ```
 
 ### InsertCmd/Insert 
